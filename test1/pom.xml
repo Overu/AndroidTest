@@ -11,12 +11,12 @@
   <packaging>apk</packaging>
 
 
-  <!-- <dependencies>
+  <dependencies>
     <dependency>
       <groupId>com.google.android</groupId>
       <artifactId>android</artifactId>
     </dependency>
-  </dependencies> -->
+  </dependencies>
 
   <build>
     <finalName>${project.artifactId}</finalName>
@@ -24,11 +24,9 @@
       <plugin>
         <groupId>com.jayway.maven.plugins.android.generation2</groupId>
         <artifactId>android-maven-plugin</artifactId>
-        <configuration>
-          <sdk>
-            <platform>17</platform>
-          </sdk>
-        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
       </plugin>
     </plugins>
   </build>

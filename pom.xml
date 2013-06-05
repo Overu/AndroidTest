@@ -10,7 +10,7 @@
   <properties>
     <android.platform.version>4.1.1.4</android.platform.version>
   </properties>
-  
+
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -29,12 +29,6 @@
           </exclusion>
         </exclusions>
       </dependency>
-
-      <dependency>
-        <groupId>com.goodow.realtime</groupId>
-        <artifactId>realtime-android</artifactId>
-        <version>${project.version}</version>
-      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -50,6 +44,16 @@
             <sdk>
               <platform>17</platform>
             </sdk>
+            <deleteConflictingFiles>true</deleteConflictingFiles>
+          </configuration>
+          <extensions>true</extensions>
+        </plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>2.3.2</version>
+          <configuration>
+            <source>1.6</source>
+            <target>1.6</target>
           </configuration>
         </plugin>
       </plugins>
