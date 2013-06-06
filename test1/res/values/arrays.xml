@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+   Copyright (C) 2008 Romain Guy
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+<resources>
+
+    <string-array name="conversions">
+        <item>AcrestoSquareMiles</item>
+        <item>AtmospherestoPascals</item>
+        <item>BarstoPascals</item>
+        <item>DegreesCelsiustoDegreesFahrenheit</item>
+        <item>DegreesFahrenheittoDegreesCelsius</item>
+        <item>DynestoNewtons</item>
+        <item>Feet/SecondtoMetres/Second</item>
+        <item>FluidOunces(UK)toLitres</item>
+        <item>FluidOunces(US)toLitres</item>
+        <item>Horsepower(electric)toWatts</item>
+        <item>Horsepower(metric)toWatts</item>
+        <item>KilogramstoTons(UKorlong)</item>
+        <item>KilogramstoTons(USorshort)</item>
+        <item>LitrestoFluidounces(UK)</item>
+        <item>LitrestoFluidounces(US)</item>
+        <item>MachNumbertoMetres/Second</item>
+        <item>Metres/SecondtoFeet/Second</item>
+        <item>Metres/SecondtoMachNumber</item>
+        <item>Miles/Gallon(UK)toMiles/Gallon(US)</item>
+        <item>Miles/Gallon(US)toMiles/Gallon(UK)</item>
+        <item>NewtonstoDynes</item>
+        <item>PascalstoAtmospheres</item>
+        <item>PascalstoBars</item>
+        <item>SquareMilestoAcres</item>
+        <item>Tons(UKorlong)toKilograms</item>
+        <item>Tons(USorshort)toKilograms</item>
+        <item>WattstoHorsepower(electric)</item>
+        <item>WattstoHorsepower(metric)</item>
+    </string-array>
+
+</resources>
