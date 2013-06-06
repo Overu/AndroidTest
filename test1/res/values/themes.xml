@@ -18,6 +18,6 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
     <style name="Theme.UC" parent="android:Theme.Light">
         <item name="android:windowNoTitle">true</item>
-        <item name="android:background">@android:color/white</item>
+        <item name="android:background">@android:color/transparent</item>
     </style>
 </resources>
