@@ -12,6 +12,20 @@
  */
 package com.androidtest.test1;
 
+import com.androidtest.test1.provider.ConversionTool;
+
+import java.util.ArrayList;
+
+import javax.inject.Inject;
+
+import android.widget.TextView;
+
+import android.text.Editable;
+
+import android.text.Editable;
+
+import android.text.TextWatcher;
+
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectResource;
@@ -30,16 +44,26 @@ import android.app.Activity;
 public class UC extends RoboActivity {
 
   private int position = 0;
-  
+
   @InjectView(R.id.units)
   EditText etUnits;
-  @InjectView(R.id.conversions)
-  Spinner spnConversions;
+  @InjectView(R.id.output)
+  TextView outputView;
+  @InjectView(R.id.conversions1)
+  Spinner spnConversions1;
+  @InjectView(R.id.conversions2)
+  Spinner spnConversions2;
+  @InjectView(R.id.conversions3)
+  Spinner spnConversions3;
   @InjectView(R.id.clear)
   Button btnClear;
   @InjectView(R.id.convert)
   Button btnConvert;
-  
+  @InjectView(R.id.close)
+  Button btnClose;
+
+  @Inject
+  ConversionTool tool;
 
   private double[] multipliers = {
       0.0015625, 101325.0, 100000.0, 0, 0, 0.00001, 0.3048, 0.0284130625, 0.029573295625, 746.0, 735.499, 1 / 1016.0469088, 1 / 907.18474,
@@ -49,45 +73,89 @@ public class UC extends RoboActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    
-    ArrayAdapter<CharSequence> aa = ArrayAdapter.createFromResource(this, R.array.conversions, android.R.layout.simple_spinner_item);
-    
-    aa.setDropDownViewResource(android.R.layout.simple_spinner_item);
-    spnConversions.setAdapter(aa);
-    
-    spnConversions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
-		@Override
-		public void onItemSelected(AdapterView<?> parent, View view,
-				int position, long id) {
-			UC.this.position = position;
-		}
+    ArrayAdapter<CharSequence> aa = tool.getArrayAdapterByType(this, -1);
+    spnConversions1.setAdapter(aa);
 
-		@Override
-		public void onNothingSelected(AdapterView<?> parent) {
-			System.out.println("nothing");
-		}
+    spnConversions1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
-	});
-    
+      @Override
+      public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        UC.this.position = position;
+        ArrayAdapter<CharSequence> aa = tool.getArrayAdapterByType(UC.this, position);
+        spnConversions2.setAdapter(aa);
+        spnConversions3.setAdapter(aa);
+        spnConversions3.setSelection(1);
+      }
+
+      @Override
+      public void onNothingSelected(AdapterView<?> parent) {
+        System.out.println("nothing");
+      }
+
+    });
+
     btnClear.setOnClickListener(new View.OnClickListener() {
-		
-		@Override
-		public void onClick(View v) {
-			etUnits.setText("");	
-		}
-	});
+
+      @Override
+      public void onClick(View v) {
+        etUnits.setText("");
+      }
+    });
     btnClear.setEnabled(false);
-    
+
     btnConvert.setOnClickListener(new View.OnClickListener() {
-		
-		@Override
-		public void onClick(View v) {
-			String text = etUnits.getText().toString();
-			double imput = Double.parseDouble(text);
-			double result = 0;
-		}
-	});
+
+      @Override
+      public void onClick(View v) {
+        String text = etUnits.getText().toString();
+        double input = Double.parseDouble(text);
+        double result = 0;
+        if (position == 3) {
+
+        } else if (position == 4) {
+
+        } else {
+          input *= multipliers[position];
+        }
+        etUnits.setText("" + input);
+      }
+    });
+    btnConvert.setEnabled(false);
+
+    btnClose.setOnClickListener(new View.OnClickListener() {
+
+      @Override
+      public void onClick(View v) {
+        finish();
+      }
+    });
+
+    TextWatcher tw = new TextWatcher() {
+
+      @Override
+      public void afterTextChanged(Editable s) {
+
+      }
+
+      @Override
+      public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+      }
+
+      @Override
+      public void onTextChanged(CharSequence s, int start, int before, int count) {
+        if (etUnits.getText().length() == 0) {
+          btnClear.setEnabled(false);
+          btnConvert.setEnabled(false);
+        } else {
+          btnClear.setEnabled(true);
+          btnConvert.setEnabled(true);
+        }
+      }
+    };
+
+    etUnits.addTextChangedListener(tw);
   }
 
 }
