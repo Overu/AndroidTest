@@ -78,16 +78,5 @@ public class UC extends RoboActivity {
 		}
 	});
     btnClear.setEnabled(false);
-    
-    btnConvert.setOnClickListener(new View.OnClickListener() {
-		
-		@Override
-		public void onClick(View v) {
-			String text = etUnits.getText().toString();
-			double imput = Double.parseDouble(text);
-			double result = 0;
-		}
-	});
-  }
 
 }
