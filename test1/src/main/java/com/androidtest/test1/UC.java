@@ -13,23 +13,14 @@
 package com.androidtest.test1;
 
 import com.androidtest.test1.provider.ConversionTool;
-
-import java.util.ArrayList;
-
 import javax.inject.Inject;
-
 import android.widget.TextView;
-
 import android.text.Editable;
-
-import android.text.Editable;
-
 import android.text.TextWatcher;
-
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
-import roboguice.inject.InjectResource;
 import roboguice.inject.InjectView;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -37,8 +28,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-
-import android.app.Activity;
 
 @ContentView(R.layout.main)
 public class UC extends RoboActivity {
@@ -69,6 +58,12 @@ public class UC extends RoboActivity {
       0.0015625, 101325.0, 100000.0, 0, 0, 0.00001, 0.3048, 0.0284130625, 0.029573295625, 746.0, 735.499, 1 / 1016.0469088, 1 / 907.18474,
       1 / 907.18474, 1 / 0.0284130625, 1 / 0.0295735295625, 331.5, 1 / 0.3048, 1 / 331.5, 0.833, 1 / 0.833, 10000.0, 1 / 101325.0, 0.00001,
       640.0, 1016.0469088, 907.18474, 1 / 746.0, 1 / 735.499 };
+
+  @Override
+  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+
+  }
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -127,7 +122,10 @@ public class UC extends RoboActivity {
 
       @Override
       public void onClick(View v) {
-        finish();
+        Intent intent = new Intent(UC.this, MessageActivity.class);
+        // startActivity(intent);
+        startActivityForResult(intent, 1);
+        // finish();
       }
     });
 
@@ -157,5 +155,4 @@ public class UC extends RoboActivity {
 
     etUnits.addTextChangedListener(tw);
   }
-
 }

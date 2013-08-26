@@ -14,5 +14,8 @@
     <string name="conversiontype">转换类型:</string>
     <string name="to">到</string>
     
+    <string name="action">action</string>
+    <string name="end">end</string>
+    
 
 </resources>
